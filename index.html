@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hanuman AI - Loading</title>
+  <style>
+    /* Full Screen */
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(-45deg, #333, #111);
+      background-size: 400% 400%;
+      animation: gradientFlow 8s ease infinite;
+    }
+
+    /* Gradient Background Animation */
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Loader Container */
+    #loader {
+      text-align: center;
+      color: white;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Logo */
+    .logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+      margin-bottom: 15px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 10px #fff; }
+      50% { transform: scale(1.1); box-shadow: 0 0 white; }
+      100% { transform: scale(1); box-shadow: 0 0 10px #fff; }
+    }
+
+    /* Title */
+    .title {
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin: 10px 0;
+      text-shadow: 0 0 15px white, 0 0 25px white;
+    }
+
+    /* Loader Text */
+    .loader-text {
+      font-size: 1rem;
+      margin-top: 10px;
+      animation: fadeBlink 1.5s infinite;
+    }
+
+    @keyframes fadeBlink {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      width: 200px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      margin: 20px auto 0;
+      overflow: hidden;
+    }
+
+    .progress-bar span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: #ffd700;
+      animation: loadBar 5s linear forwards;
+    }
+
+    @keyframes loadBar {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+
+    /* Fade Out Effect */
+    .fade-out {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="loader">
+    <!-- Apna logo yaha daalna -->
+    <img src="images (1).jpeg" alt="Hanuman Logo" class="logo" />
+    <h1 class="title">Hanuman</h1>
+    <p class="loader-text">Loading...</p>
+    <div class="progress-bar"><span></span></div>
+  </div>
+
+  <script>
+    // Rotating taglines
+    const texts = [
+      "Hanuman is powering up ⚡",
+      "Summoning wisdom 📚",
+      "Blessings are on the way ✨",
+      "Almost ready 🚀"
+    ];
+    let i = 0;
+    setInterval(() => {
+      document.querySelector(".loader-text").textContent = texts[i];
+      i = (i + 1) % texts.length;
+    }, 1500);
+
+    // Redirect after loading
+    setTimeout(() => {
+      const loader = document.getElementById("loader");
+      loader.classList.add("fade-out");
+
+      setTimeout(() => {
+        window.location.href = "hanuman.html"; // 👈 apna main page ka naam daalna
+      }, 1000);
+    }, 5000);
+  </script>
+</body>
+</html>
